@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>FAQs – KidsBook</title>
+    <style>
+        /* ----- RESET & BASE ----- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f7fc;
+            color: #1e293b;
+            padding: 16px;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ----- CARD CONTAINER ----- */
+        .container {
+            background: #ffffff;
+            max-width: 880px;
+            width: 100%;
+            padding: 28px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+            transition: padding 0.2s ease;
+        }
+
+        /* ----- TYPOGRAPHY ----- */
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.15rem;
+            word-break: break-word;
+        }
+
+        .page-subhead {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 1.75rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+            padding: 0.3rem 0 0.2rem 0;
+            border-bottom: 2px solid #e9edf2;
+        }
+
+        /* ----- FAQ LIST (accordion style, always expanded for readability) ----- */
+        .faq-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.25rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .faq-list li {
+            background: #f8fafc;
+            border: 1px solid #e9edf2;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+
+        .faq-list li:hover {
+            background: #f1f5f9;
+            border-color: #d1d9e6;
+        }
+
+        .faq-list li .faq-q {
+            font-weight: 600;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 0.98rem;
+        }
+
+        .faq-list li .faq-q::before {
+            content: "Q: ";
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        .faq-list li .faq-a {
+            color: #1e293b;
+            font-weight: 400;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: block;
+            padding-left: 0.2rem;
+        }
+
+        .faq-list li .faq-a::before {
+            content: "A: ";
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .faq-list li .faq-a a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .faq-list li .faq-a a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+
+        a:focus-visible {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* ----- TABLET & DESKTOP ----- */
+        @media (min-width: 600px) {
+            body {
+                padding: 32px 24px;
+            }
+
+            .container {
+                padding: 36px 40px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+                margin-top: 2rem;
+            }
+
+            .faq-list li {
+                padding: 0.9rem 1.2rem;
+            }
+
+            .faq-list li .faq-q {
+                font-size: 1rem;
+            }
+
+            .faq-list li .faq-a {
+                font-size: 0.97rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                padding: 48px 32px;
+            }
+
+            .container {
+                padding: 48px 56px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .faq-list li {
+                padding: 1rem 1.4rem;
+            }
+        }
+
+        /* ----- SMALL PHONES (tight) ----- */
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 18px 14px;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                font-size: 1.0rem;
+                margin-top: 1.3rem;
+            }
+
+            .page-subhead {
+                font-size: 0.85rem;
+            }
+
+            .faq-list li {
+                padding: 0.6rem 0.8rem;
+            }
+
+            .faq-list li .faq-q {
+                font-size: 0.92rem;
+            }
+
+            .faq-list li .faq-a {
+                font-size: 0.90rem;
+            }
+        }
+
+        /* ----- TOUCH TARGETS ----- */
+        a {
+            padding: 2px 0;
+            display: inline-block;
+        }
+
+        /* ----- DARK MODE (progressive) ----- */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0f172a;
+                color: #e2e8f0;
+            }
+
+            .container {
+                background: #1e293b;
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+            }
+
+            h1,
+            h2 {
+                color: #f1f5f9;
+            }
+
+            .page-subhead {
+                color: #94a3b8;
+                border-bottom-color: #334155;
+            }
+
+            h2 {
+                border-bottom-color: #334155;
+            }
+
+            .faq-list li {
+                background: #2d3a4f;
+                border-color: #3b4a63;
+            }
+
+            .faq-list li:hover {
+                background: #33415a;
+                border-color: #4b5a73;
+            }
+
+            .faq-list li .faq-q {
+                color: #f1f5f9;
+            }
+
+            .faq-list li .faq-q::before {
+                color: #60a5fa;
+            }
+
+            .faq-list li .faq-a {
+                color: #cbd5e1;
+            }
+
+            .faq-list li .faq-a::before {
+                color: #94a3b8;
+            }
+
+            .faq-list li .faq-a a,
+            a {
+                color: #60a5fa;
+            }
+
+            .faq-list li .faq-a a:hover,
+            a:hover {
+                color: #93bbfc;
+            }
+
+            a:focus-visible {
+                outline-color: #60a5fa;
+            }
+        }
+
+        /* ----- PRINT ----- */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0.5in;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+            .faq-list li {
+                background: #f5f5f5;
+                border-color: #ccc;
+                break-inside: avoid;
+            }
+            .faq-list li .faq-q::before {
+                color: #000;
+            }
+            .faq-list li .faq-a::before {
+                color: #333;
+            }
+            a {
+                color: #000;
+                text-decoration: underline;
+            }
+            .page-subhead {
+                border-bottom-color: #ccc;
+            }
+            h2 {
+                border-bottom-color: #ccc;
+            }
+        }
+
+        /* ----- REDUCED MOTION ----- */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Frequently Asked Questions</h1>
+        <p class="page-subhead">Everything you need to know about KidsBook</p>
+
+        <!-- ===== GENERAL QUESTIONS ===== -->
+        <h2>General Questions</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">What is KidsBook?</span>
+                <span class="faq-a">KidsBook is an educational learning app for children that teaches ABCD, numbers, Hindi, tables, and more through fun interactive activities.</span>
+            </li>
+            <li>
+                <span class="faq-q">Is KidsBook free?</span>
+                <span class="faq-a">Yes! KidsBook is completely free to download and use. We may show ads to keep the app free.</span>
+            </li>
+            <li>
+                <span class="faq-q">What age is KidsBook for?</span>
+                <span class="faq-a">KidsBook is designed for children aged 3–8 years old.</span>
+            </li>
+            <li>
+                <span class="faq-q">Is KidsBook safe for kids?</span>
+                <span class="faq-a">Absolutely! We comply with COPPA and Google Play's Family Policy. We do not collect personal information from children.</span>
+            </li>
+        </ul>
+
+        <!-- ===== LEARNING QUESTIONS ===== -->
+        <h2>Learning Questions</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">What subjects does KidsBook cover?</span>
+                <span class="faq-a">KidsBook covers English alphabet (ABCD), vocabulary (A for Apple), Hindi alphabet (Varnmala), numbers (1–100), multiplication tables, stories, and songs.</span>
+            </li>
+            <li>
+                <span class="faq-q">How does KidsBook help my child learn?</span>
+                <span class="faq-a">KidsBook uses colorful visuals, audio pronunciation, interactive activities, and fun games to make learning engaging and effective.</span>
+            </li>
+            <li>
+                <span class="faq-q">Does KidsBook have audio support?</span>
+                <span class="faq-a">Yes! Most learning modules include audio pronunciation to help children learn correct pronunciation.</span>
+            </li>
+        </ul>
+
+        <!-- ===== TECHNICAL QUESTIONS ===== -->
+        <h2>Technical Questions</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">Does KidsBook work offline?</span>
+                <span class="faq-a">Some features work offline, but internet connectivity is recommended for ads and content updates.</span>
+            </li>
+            <li>
+                <span class="faq-q">How do I update the app?</span>
+                <span class="faq-a">Updates are available through Google Play Store. We recommend enabling automatic updates.</span>
+            </li>
+            <li>
+                <span class="faq-q">What permissions does KidsBook need?</span>
+                <span class="faq-a">KidsBook only requires basic permissions needed for app functionality.</span>
+            </li>
+        </ul>
+
+        <!-- ===== AD QUESTIONS ===== -->
+        <h2>Ad Questions</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">Why does KidsBook show ads?</span>
+                <span class="faq-a">Ads help us keep KidsBook free for everyone. All ads are child-appropriate and comply with Google Play's Family Policy.</span>
+            </li>
+            <li>
+                <span class="faq-q">Can I remove ads?</span>
+                <span class="faq-a">Currently, there is no ad-free version available.</span>
+            </li>
+        </ul>
+
+        <!-- ===== SUPPORT QUESTIONS ===== -->
+        <h2>Support Questions</h2>
+        <ul class="faq-list">
+            <li>
+                <span class="faq-q">How do I report a bug or issue?</span>
+                <span class="faq-a">Please email us at <a href="mailto:your-email@example.com">your-email@example.com</a> with details about the issue.</span>
+            </li>
+            <li>
+                <span class="faq-q">How can I suggest new features?</span>
+                <span class="faq-a">We welcome suggestions! Email us at <a href="mailto:your-email@example.com">your-email@example.com</a> with your ideas.</span>
+            </li>
+            <li>
+                <span class="faq-q">How can I share KidsBook?</span>
+                <span class="faq-a">You can share KidsBook with friends and family through the share button in the app!</span>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
