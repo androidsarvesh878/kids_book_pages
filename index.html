@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KidsBook – Fun Learning for Kids</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #f0f7f0;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .header {
+            background: linear-gradient(135deg, #2e7d32, #43a047, #66bb6a);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 36px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 14px;
+        }
+
+        .logo h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 28px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            display: block;
+            margin-top: -4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #fff;
+            opacity: 0.8;
+        }
+
+        .nav-links .btn-download {
+            background: #fff;
+            color: #2e7d32;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .nav-links .btn-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: none;
+            opacity: 1;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 70px 0 60px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 48px;
+            color: #1b5e20;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #2e7d32;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-weight: 600;
+        }
+
+        .hero .subtitle {
+            font-size: 16px;
+            color: #388e3c;
+            font-weight: 400;
+            max-width: 550px;
+            margin: -10px auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn-primary {
+            background: #2e7d32;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-buttons .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.4);
+        }
+
+        .hero-buttons .btn-secondary {
+            background: transparent;
+            color: #2e7d32;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            border: 2px solid #2e7d32;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .hero-buttons .btn-secondary:hover {
+            background: #2e7d32;
+            color: #fff;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 70px 0 50px;
+            background: #fff;
+        }
+
+        .features h3 {
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            font-size: 34px;
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        .features .section-sub {
+            text-align: center;
+            color: #558b2f;
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: #f9fbf9;
+            padding: 28px 20px 24px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e8f5e9;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(46, 125, 50, 0.12);
+            border-color: #a5d6a7;
+        }
+
+        .feature-card i {
+            font-size: 40px;
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 14px;
+        }
+
+        .feature-card h4 {
+            font-size: 18px;
+            color: #1b5e20;
+            margin-bottom: 6px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #4a5a4a;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: #e8f5e9;
+            padding: 60px 0;
+        }
+
+        .about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            color: #1b5e20;
+            margin-bottom: 16px;
+        }
+
+        .about p {
+            color: #2e4a2e;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .about ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about ul li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: #2e4a2e;
+        }
+
+        .about ul li i {
+            color: #2e7d32;
+            font-size: 18px;
+            width: 24px;
+        }
+
+        .about-image {
+            background: #c8e6c9;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            font-size: 80px;
+            color: #2e7d32;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .about-image span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1b5e20;
+        }
+
+        /* ===== TESTIMONIAL ===== */
+        .testimonial {
+            background: #fff;
+            padding: 60px 0;
+        }
+
+        .testimonial h3 {
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            color: #1b5e20;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-box {
+            background: #f9fbf9;
+            border-radius: 20px;
+            padding: 32px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            border-left: 5px solid #2e7d32;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-box .stars {
+            color: #f9a825;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-box blockquote {
+            font-size: 17px;
+            color: #2d3748;
+            font-style: italic;
+            margin: 12px 0;
+        }
+
+        .testimonial-box .author {
+            font-weight: 700;
+            color: #1b5e20;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1b3a1b;
+            color: #c8e6c9;
+            padding: 40px 0 20px;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer h4 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #a5d6a7;
+            line-height: 1.8;
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 14px;
+            color: #a5d6a7;
+            padding: 4px 0;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px solid #2e4a2e;
+            font-size: 13px;
+            color: #81a981;
+            grid-column: 1 / -1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .about .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-image {
+                min-height: 140px;
+                padding: 20px;
+                font-size: 50px;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <div>
+                    <h1>KidsBook</h1>
+                    <span>Fun Learning for Kids</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="mailto:your-email@example.com">Contact</a>
+                <a href="https://play.google.com/store/apps/details?id=com.sarvesh.kidsbook" class="btn-download">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <h2>📚 Learn &amp; Play Every Day</h2>
+            <p>KidsBook – Fun Learning for Kids</p>
+            <p class="subtitle">
+                ABCD, Numbers, Hindi, Tables, Stories &amp; Songs – all in one app!
+            </p>
+            <div class="hero-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.sarvesh.kidsbook" class="btn-primary">
+                    <i class="fab fa-google-play"></i> Download Now
+                </a>
+                <a href="#features" class="btn-secondary">
+                    <i class="fas fa-arrow-down"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <h3>🌟 What Kids Will Learn</h3>
+            <p class="section-sub">Fun, interactive, and educational content for ages 3–8</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-font"></i>
+                    <h4>ABCD Alphabet</h4>
+                    <p>Learn English letters with colorful images</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h4>A for Apple</h4>
+                    <p>Build vocabulary with everyday words</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-om"></i>
+                    <h4>Hindi Varnmala</h4>
+                    <p>Learn Hindi alphabet with beautiful visuals</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calculator"></i>
+                    <h4>Numbers 1–100</h4>
+                    <p>Counting made fun with interactive activities</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-table"></i>
+                    <h4>Multiplication Tables</h4>
+                    <p>Practice tables with ease</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-music"></i>
+                    <h4>Stories &amp; Songs</h4>
+                    <p>Engaging audio and video content</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div>
+                <h3>📖 About KidsBook</h3>
+                <p>
+                    KidsBook is a fun, interactive learning app designed to help children
+                    build a strong foundation in early education. We believe learning should
+                    be joyful, engaging, and accessible to every child.
+                </p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Child-safe &amp; COPPA compliant</li>
+                    <li><i class="fas fa-check-circle"></i> 100% free – no hidden charges</li>
+                    <li><i class="fas fa-check-circle"></i> Audio support for pronunciation</li>
+                    <li><i class="fas fa-check-circle"></i> Colorful, kid-friendly design</li>
+                    <li><i class="fas fa-check-circle"></i> No account required</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <i class="fas fa-child"></i>
+                <span>👶 For Kids 3–8</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIAL ===== -->
+    <section class="testimonial">
+        <div class="container">
+            <h3>💬 What Parents Say</h3>
+            <div class="testimonial-box">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>
+                    “My 4-year-old loves KidsBook! She’s learning ABCD and numbers with so much
+                    enthusiasm. The colorful visuals and audio keep her engaged for hours.”
+                </blockquote>
+                <span class="author">– Happy Parent</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h4>📚 KidsBook</h4>
+                <p>
+                    Making learning fun and effective for children aged 3–8.
+                    ABCD, Numbers, Hindi, Tables, Stories &amp; Songs – all in one app!
+                </p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.sarvesh.kidsbook">
+                        <i class="fas fa-download"></i> Download App
+                    </a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms &amp; Conditions</a>
+                    <a href="mailto:your-email@example.com">Contact Us</a>
+                </div>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <div class="footer-links">
+                    <a href="mailto:your-email@example.com">
+                        <i class="fas fa-envelope"></i> your-email@example.com
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.sarvesh.kidsbook">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 KidsBook. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
